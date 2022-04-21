@@ -58,12 +58,8 @@
 
     map.on('locationfound', onLocationFound);
 	map.on('locationerror', onLocationError);
-	
-	const interval = setInterval(function(){onLocationFound}, 5000);
 
-	clearInterval(interval);
-
-	map.locate({setView: true, maxZoom: 16});
+	map.locate({setView: true, watch: true, maxZoom: 16});
 </script>
 
 
