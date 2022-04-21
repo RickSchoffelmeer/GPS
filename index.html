@@ -56,10 +56,10 @@
 		alert(e.message);
 	}
 
-    //map.on('locationfound', onLocationFound);
+    map.on('locationfound', onLocationFound);
 	map.on('locationerror', onLocationError);
 	
-	const interval = setInterval(map.on('locationfound', onLocationFound), 5000);
+	const interval = setInterval(function(){onLocationFound}, 5000);
 
 	clearInterval(interval);
 
