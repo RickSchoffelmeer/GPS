@@ -44,6 +44,14 @@
 	}).addTo(map);
 
 	function onLocationFound(e) {
+		var curlocationMarker = null;
+		var curlocationCircle = null;
+		
+		if (curlocationMarker != null){
+		map.removeLayer(curlocationCircle);
+		map.removeLayer(curlocationMarker);
+		}
+
 		var radius = e.accuracy / 2;
 
 		var newlocationMarker = L.marker(e.latlng)
@@ -54,17 +62,8 @@
 		map.addLayer(newlocationMarker);
 		map.addLayer(newlocationCircle);
 		
-		var curlocationMarker;
-		var curlocationCircle;
-		
-		if (newlocationMarker != curlocationMarker){
-			map.removeLayer(curlocationMarker);
-			map.removeLayer(curlocationCircle);
-			map.addLayer(newlocationMarker);
-			map.addLayer(newlocationCircle);
-			curlocationMarker = newlocationMarker;
-			curlocationCircle = newlocationCircle;
-		}
+		curlocationMarker = newlocationMarker;
+		curlocationCircle = newlocationCircle;
 		
 	}
 
