@@ -46,10 +46,13 @@
 	function onLocationFound(e) {
 		var radius = e.accuracy / 2;
 
-		var locationMarker = L.marker(e.latlng).addTo(map)
+		var locationMarker = L.marker(e.latlng)
 			.bindPopup('You are within ' + radius + ' meters from this point').openPopup();
 
-		var locationCircle = L.circle(e.latlng, radius).addTo(map);
+		var locationCircle = L.circle(e.latlng, radius);
+		map.addLayer(locationMarker);
+		map.addLayer(locationCircle);
+		
 	}
 
 	function onLocationError(e) {
