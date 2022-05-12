@@ -46,12 +46,25 @@
 	function onLocationFound(e) {
 		var radius = e.accuracy / 2;
 
-		var locationMarker = L.marker(e.latlng)
+		var newlocationMarker = L.marker(e.latlng)
 			.bindPopup('You are within ' + radius + ' meters from this point').openPopup();
 
-		var locationCircle = L.circle(e.latlng, radius);
-		map.addLayer(locationMarker);
-		map.addLayer(locationCircle);
+		var newlocationCircle = L.circle(e.latlng, radius);
+		
+		map.addLayer(newlocationMarker);
+		map.addLayer(newlocationCircle);
+		
+		var curlocationMarker;
+		var curlocationCircle;
+		
+		if (newlocationMarker != curlocationMarker){
+			map.removeLayer(curlocationMarker);
+			map.removeLayer(curlocationCircle);
+			map.addLayer(newlocationMarker);
+			map.addLayer(newlocationCircle);
+			curlocationMarker = newlocationMarker;
+			curlocationCircle = newlocationCircle;
+		}
 		
 	}
 
