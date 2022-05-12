@@ -67,13 +67,26 @@
 		
 		curlocationMarker = newlocationMarker;
 		curlocationCircle = newlocationCircle;
-		
+
+		checkMarkerFound();
 	}
 
 	function onLocationError(e) {
 		alert(e.message);
 	}
 
+	function markerDraw() {
+		var checkpoint = L.marker([53.212313, 5.799432]);
+		map.addLayer(checkpoint);
+	}
+
+	function checkMarkerFound() {
+		checkpoint.on('add', function(){
+			map.openPopup( popupForMarker1 );
+		});
+	}
+
+	markerDraw();
     map.on('locationfound', onLocationFound);
 	map.on('locationerror', onLocationError);
 
