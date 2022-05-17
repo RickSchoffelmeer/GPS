@@ -69,8 +69,7 @@
 
 		var radius = e.accuracy / 2;
 
-		newlocationMarker = L.marker(e.latlng)
-			.bindPopup('You are within ' + radius + ' meters from this point').openPopup();
+		newlocationMarker = L.marker(e.latlng);
 
 		newlocationCircle = L.circle(e.latlng, radius);
 		
