@@ -81,7 +81,7 @@
 		curlocationMarker = newlocationMarker;
 		curlocationCircle = newlocationCircle;
 
-		checkMarkerFound(e);
+		//checkMarkerFound(e);
 	}
 
 	function onLocationError(e) {
@@ -96,7 +96,7 @@
                 feature.geometry.coordinates[0])) < RADIUS;
     });
 	}
-    
+
     map.on('locationfound', onLocationFound);
 	map.on('locationerror', onLocationError);
 
