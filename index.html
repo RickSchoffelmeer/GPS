@@ -80,6 +80,13 @@
 		
 		curlocationMarker = newlocationMarker;
 		curlocationCircle = newlocationCircle;
+        
+        filterCircle.setLatLng(e.latlng);
+        csvLayer.setFilter(function showEvents(feature) {
+            return e.latlng.distanceTo(L.latLng(
+                feature.geometry.coordinates[1],
+                feature.geometry.coordinates[0])) < radiusFilter;
+        });
 	}
 
 	function onLocationError(e) {
@@ -96,14 +103,14 @@
 	//}
 
     map.on('locationfound', onLocationFound);
-    map.on('mousemove', function(e) {
-    filterCircle.setLatLng(e.latlng);
-    csvLayer.setFilter(function showEvents(feature) {
-        return e.latlng.distanceTo(L.latLng(
-                feature.geometry.coordinates[1],
-                feature.geometry.coordinates[0])) < radiusFilter;
-    });
-});
+    //map.on('locationfound', function(e) {
+    //filterCircle.setLatLng(e.latlng);
+    //csvLayer.setFilter(function showEvents(feature) {
+    //    return e.latlng.distanceTo(L.latLng(
+    //            feature.geometry.coordinates[1],
+    //            feature.geometry.coordinates[0])) < radiusFilter;
+    //    });
+    //});
 	map.on('locationerror', onLocationError);
 
 	map.locate({setView: true, watch: true});
