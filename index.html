@@ -62,7 +62,7 @@
     var filterCircle = L.circle(L.latLng(53.201233, 5.799913), radiusFilter, {
         opacity: 0,
         weight: 1,
-        fillOpacity: 0.4
+        fillOpacity: 0
     });
 
 	function onLocationFound(e) {
@@ -90,6 +90,7 @@
             return e.latlng.distanceTo(L.latLng(
                 feature.geometry.coordinates[1],
                 feature.geometry.coordinates[0])) < radiusFilter;
+                feature.bindPopup("Dit is een pop up").openPopup();
         });
 	}
 
@@ -100,14 +101,6 @@
     var csvLayer = omnivore.csv('eventMarkers.csv', null, L.mapbox.featureLayer()).addTo(map);
 
     map.on('locationfound', onLocationFound);
-    //map.on('locationfound', function(e) {
-    //filterCircle.setLatLng(e.latlng);
-    //csvLayer.setFilter(function showEvents(feature) {
-    //    return e.latlng.distanceTo(L.latLng(
-    //            feature.geometry.coordinates[1],
-    //            feature.geometry.coordinates[0])) < radiusFilter;
-    //    });
-    //});
 	map.on('locationerror', onLocationError);
 
 	map.locate({setView: true, watch: true});
