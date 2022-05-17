@@ -39,7 +39,7 @@
 	var newlocationMarker;
 	var curlocationCircle;
 	var curlocationMarker;
-    var RADIUS = newlocationCircle*10;
+    var RADIUS = newlocationCircle*1000;
 
 	var map = L.map('map').fitWorld();
 
@@ -88,7 +88,7 @@
 	}
 
 	function checkMarkerFound(e) {
-		filterCircle.setLatLng(e.latlng);
+		//filterCircle.setLatLng(e.latlng);
         csvLayer.setFilter(function showEvents(feature) {
         return e.latlng.distanceTo(L.latLng(
                 feature.geometry.coordinates[1],
