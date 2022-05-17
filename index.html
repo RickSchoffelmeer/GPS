@@ -96,7 +96,7 @@
 	//}
 
     map.on('locationfound', onLocationFound);
-    map.on('locationfound', function(e) {
+    map.on('mousemove', function(e) {
     filterCircle.setLatLng(e.latlng);
     csvLayer.setFilter(function showEvents(feature) {
         return e.latlng.distanceTo(L.latLng(
