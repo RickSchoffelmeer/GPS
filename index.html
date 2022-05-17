@@ -52,14 +52,13 @@
 		zoomOffset: -1
 	}).addTo(map);
 
-    var filterCircle = L.circle(L.latLng(53.201233, 5.799913), RADIUS, {
-        opacity: 1,
-        weight: 1,
-        fillOpacity: 0.4
-    }).addTo(map);
+    //var filterCircle = L.circle(L.latLng(53.201233, 5.799913), RADIUS, {
+    //    opacity: 1,
+    //    weight: 1,
+    //    fillOpacity: 0.4
+    //}).addTo(map);
 
-    var csvLayer = omnivore.csv('eventMarkers.csv', null, L.mapbox.featureLayer())
-    .addTo(map);
+    var csvLayer = omnivore.csv('eventMarkers.csv', null, L.mapbox.featureLayer()).addTo(map);
 
 	function onLocationFound(e) {
 		
@@ -81,7 +80,7 @@
 		curlocationMarker = newlocationMarker;
 		curlocationCircle = newlocationCircle;
 
-		//checkMarkerFound(e);
+		checkMarkerFound(e);
 	}
 
 	function onLocationError(e) {
